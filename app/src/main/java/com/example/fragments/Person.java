@@ -3,10 +3,24 @@ package com.example.fragments;
 public class Person {
     String name;
     String phone;
+    int imageView;
 
     public Person(String name, String phone) {
         this.name = name;
         this.phone = phone;
+    }
+    public Person(String name,String phone,int imageView){
+        this.name = name;
+        this.phone = phone;
+        this.imageView=imageView;
+    }
+
+    public void setImageView(int imageView) {
+        this.imageView = imageView;
+    }
+
+    public int getImageView() {
+        return imageView;
     }
 
     public String getPhone() {
