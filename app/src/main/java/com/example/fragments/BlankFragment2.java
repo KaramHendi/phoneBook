@@ -24,7 +24,7 @@ ImageView ivContact;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = null;
+        View view = inflater.inflate(R.layout.fragment_2, container, false);
         tvName=view.findViewById(R.id.tvName);
         tvPhone=view.findViewById(R.id.tvPhone);
         ivContact=view.findViewById(R.id.imageContact);

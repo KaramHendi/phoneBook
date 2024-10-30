@@ -13,12 +13,30 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder> {
-   private ArrayList <Person> list;
-   ItemSelected activity;
-   public PersonAdapter (Context context,ArrayList<Person>list){
-       this.list=list;
-       activity=(ItemSelected) context;
-   }
+    private ArrayList <Person> list;
+    ItemSelected activity;
+    public PersonAdapter (Context context,ArrayList<Person>list){
+        this.list=list;
+        activity=(ItemSelected) context;
+    }
+    public interface ItemSelected{
+        void onItemClicked(int index);
+    }
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        TextView textView;
+        ImageView imageView;
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            textView=itemView.findViewById(R.id.tvName);
+            imageView=itemView.findViewById(R.id.imgContact);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    activity.onItemClicked(list.indexOf(v.getTag()));
+                }
+            });
+        }
+    }
 
     @NonNull
     @Override
@@ -29,9 +47,9 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-       holder.itemView.setTag(list.get(position));
-     holder.textView.setText(list.get(position).getName());
-     holder.imageView.setImageResource(list.get(position).getImageView());
+        holder.itemView.setTag(list.get(position));
+        holder.textView.setText(list.get(position).getName());
+        holder.imageView.setImageResource(list.get(position).getImageView());
     }
 
     @Override
@@ -39,25 +57,4 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
         return list.size();
     }
 
-    public interface ItemSelected{
-       void onItemClicked(int index);
-
-
-   }
-   public class ViewHolder extends RecyclerView.ViewHolder{
-       TextView textView;
-       ImageView imageView;
-       public ViewHolder(@NonNull View itemView) {
-           super(itemView);
-           textView=itemView.findViewById(R.id.tvName);
-           itemView=itemView.findViewById(R.id.imgContact);
-           itemView.setOnClickListener(new View.OnClickListener() {
-               @Override
-               public void onClick(View v) {
-                   activity.onItemClicked(list.indexOf(v.getTag()));
-               }
-           });
-       }
-   }
 }
-

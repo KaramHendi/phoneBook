@@ -18,13 +18,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
-public static ArrayList<Person> persons;
-TextView tvDate;
-String currentDate;
-Calendar calendar=Calendar.getInstance();
-FragmentManager fragmentManager;
-BlankFragment listFrag;
-BlankFragment2 detailFrag;
+    public static ArrayList<Person> persons;
+    TextView tvDate;
+    String currentDate;
+    Calendar calendar=Calendar.getInstance();
+    FragmentManager fragmentManager;
+    BlankFragment listFrag;
+    BlankFragment2 detailFrag;
 
 
 
@@ -50,5 +50,11 @@ BlankFragment2 detailFrag;
         persons.add(new Person("Ehab Towfek","0524567891",R.drawable.ehab));
 
     }
-
+    public void onItemClicked(int Index) {
+        if(!persons.isEmpty()) {
+            detailFrag.updateTexts(persons.get(Index).getName(), persons.get(Index).getPhone());
+        }
+        else
+            return ;
+    }
 }

@@ -25,8 +25,7 @@ Button btnAdd;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view;
-        view= inflater.inflate(R.layout.fragment_3, container, false);
+       View view= inflater.inflate(R.layout.fragment_3, container, false);
         etName=view.findViewById(R.id.edName);
         etPhone=view.findViewById(R.id.edPhone);
         btnAdd=view.findViewById(R.id.addPerson);
@@ -40,7 +39,7 @@ Button btnAdd;
                     String name,phone;
                     name=etName.getText().toString().trim();
                     phone=etName.getText().toString().trim();
-                    MainActivity.persons.add(new Person(name,phone));
+                    com.example.fragments.MainActivity.persons.add(new Person(name,phone));
                     Toast.makeText(getActivity(), "Person added successfully", Toast.LENGTH_SHORT).show();
                     etName.setText(null);
                     etPhone.setText(null);

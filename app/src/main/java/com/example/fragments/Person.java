@@ -1,9 +1,9 @@
 package com.example.fragments;
 
 public class Person {
-    String name;
-    String phone;
-    int imageView;
+   private String name;
+  private  String phone;
+    private int imageView;
 
     public Person(String name, String phone) {
         this.name = name;

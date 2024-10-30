@@ -1,5 +1,6 @@
 package com.example.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,9 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class BlankFragment extends Fragment {
-RecyclerView recyclerView;
-static RecyclerView.Adapter adapter;
-RecyclerView.LayoutManager manager;
+public static RecyclerView recyclerView;
+public static RecyclerView.Adapter adapter;
+public static RecyclerView.LayoutManager manager;
 
     public BlankFragment() {
         // Required empty public constructor
@@ -28,12 +29,11 @@ RecyclerView.LayoutManager manager;
         recyclerView.setHasFixedSize(true);
         manager=new LinearLayoutManager(this.getActivity());
         recyclerView.setLayoutManager(manager);
-        adapter=new PersonAdapter(this.getActivity(),MainActivity.persons);
+        adapter=new com.example.fragments.PersonAdapter(this.getActivity(), com.example.fragments.MainActivity.persons);
         recyclerView.setAdapter(adapter);
-
-
         return view;
     }
+    @SuppressLint("NotifyDataSetChanged")
     public static void notifyDataSetChanged(){
         adapter.notifyDataSetChanged();
     }
